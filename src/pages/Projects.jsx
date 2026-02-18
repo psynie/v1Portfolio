@@ -8,8 +8,8 @@ function Projects() {
       description: "An AI-powered machine learning application that predicts multiple health risks from blood test parameters using ensemble models.",
       tech: ["React", "Python", "XGBoost", "Scikit-learn", "Flask"],
       links: [
-        { label: "GitHub", url: "https://github.com/psynie/Diagnosis-of-blood-diseases-through-lab-test" },
-        { label: "Live Demo", url: "#" }
+        { label: "GitHub", url: "https://github.com/psynie/Diagnosis-of-blood-diseases-through-lab-test" }
+        // To add Live Demo in future: { label: "Live Demo", url: "YOUR_DEPLOYED_APP_URL_HERE" }
       ]
     },
     {
@@ -18,8 +18,8 @@ function Projects() {
       description: "An adaptive learning platform powered by NLP that personalizes educational content based on student feedback and interaction patterns.",
       tech: ["Python", "Flask", "MongoDB", "NLP", "TensorFlow"],
       links: [
-        { label: "GitHub", url: "https://github.com/psynie/learning-assistant" },
-        { label: "Live Demo", url: "#" }
+        { label: "GitHub", url: "https://github.com/psynie/learning-assistant" }
+        // To add Live Demo in future: { label: "Live Demo", url: "YOUR_DEPLOYED_APP_URL_HERE" }
       ]
     },
     {
@@ -28,8 +28,8 @@ function Projects() {
       description: "A full-stack legal document management system with keyword-based search and cloud-backed storage for case files.",
       tech: ["React", "Python", "Flask", "MongoDB", "NLP"],
       links: [
-        { label: "GitHub", url: "https://github.com/psynie/case_file-manager" },
-        { label: "Live Demo", url: "#" }
+        { label: "GitHub", url: "https://github.com/psynie/case_file-manager" }
+        // To add Live Demo in future: { label: "Live Demo", url: "YOUR_DEPLOYED_APP_URL_HERE" }
       ]
     },
     {
@@ -38,8 +38,8 @@ function Projects() {
       description: "A full-stack web application for managing airline bookings with real-time seat availability and dynamic pricing.",
       tech: ["React", "Tailwind CSS", "Node.js", "TypeScript", "MongoDB"],
       links: [
-        { label: "GitHub", url: "https://github.com/psynie/Airlines_sim" },
-        { label: "Live Demo", url: "#" }
+        { label: "GitHub", url: "https://github.com/psynie/Airlines_sim" }
+        // To add Live Demo in future: { label: "Live Demo", url: "YOUR_DEPLOYED_APP_URL_HERE" }
       ]
     },
     

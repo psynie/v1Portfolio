@@ -117,7 +117,7 @@ function Home() {
             </div>
             <div className="project-links">
               <a href="https://github.com/psynie/Diagnosis-of-blood-diseases-through-lab-test" className="project-link">Source Code</a>
-              <a href="#" className="project-link">Live Demo</a>
+              {/* To add Live Demo in future: <a href="YOUR_DEPLOYED_APP_URL_HERE" className="project-link">Live Demo</a> */}
             </div>
           </div>
 
@@ -136,7 +136,7 @@ function Home() {
             </div>
             <div className="project-links">
               <a href="https://github.com/psynie/learning-assistant" className="project-link">Source Code</a>
-              <a href="#" className="project-link">Live Demo</a>
+              {/* To add Live Demo in future: <a href="YOUR_DEPLOYED_APP_URL_HERE" className="project-link">Live Demo</a> */}
             </div>
           </div>
 
@@ -156,7 +156,7 @@ function Home() {
             </div>
             <div className="project-links">
               <a href="https://github.com/psynie/case_file-manager" className="project-link">Source Code</a>
-              <a href="#" className="project-link">Live Demo</a>
+              {/* To add Live Demo in future: <a href="YOUR_DEPLOYED_APP_URL_HERE" className="project-link">Live Demo</a> */}
             </div>
           </div>
         </div>
