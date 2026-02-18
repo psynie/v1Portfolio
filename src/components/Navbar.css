@@ -134,10 +134,12 @@
     overflow: hidden;
     transition: max-height 0.3s ease;
     border-bottom: 1px solid var(--border-color);
+    pointer-events: none;
   }
 
   .nav-menu.active {
     max-height: 400px;
+    pointer-events: auto;
   }
 
   .navbar-container {
