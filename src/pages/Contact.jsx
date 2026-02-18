@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 import "./Contact.css";
 
 function Contact() {
@@ -10,6 +11,13 @@ function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    // You'll need to replace this with your actual public key from EmailJS
+    emailjs.init("xkUjlYq_ftHB_Wlto");
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,15 +29,32 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend or email service
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    setError("");
+
+    const templateParams = {
+      to_email: "shaikabbuabbasali@gmail.com",
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message
+    };
+
+    emailjs
+      .send("service_fd9loz6", "template_6yi28it", templateParams)
+      .then((response) => {
+        console.log("Email sent successfully:", response);
+        setSubmitted(true);
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          setSubmitted(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Failed to send email:", error);
+        setError("Failed to send message. Please try again.");
+      });
   };
 
   return (
@@ -98,6 +123,7 @@ function Contact() {
             {submitted ? "Message Sent! ✓" : "Send Message"}
           </button>
           {submitted && <p style={{ color: "var(--success)", marginTop: "1rem", textAlign: "center" }}>Thank you! I'll get back to you soon.</p>}
+          {error && <p style={{ color: "var(--error)", marginTop: "1rem", textAlign: "center" }}>{error}</p>}
         </form>
 
         {/* Contact Info */}
