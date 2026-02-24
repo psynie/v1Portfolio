@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/Abu_Abbas_Ali_Resume.pdf";
+    link.download = "Abu_Abbas_Ali_Resume.pdf";
+    link.click();
+  };
+
   return (
     <>
       <section id="hero">
@@ -12,7 +19,12 @@ function Home() {
         </p>
 
         <div className="hero-buttons">
-          <Link to="/projects" className="btn-primary">View My Work</Link>
+          <button 
+            onClick={downloadResume}
+            className="btn-primary"
+          >
+            Download Resume
+          </button>
           <Link to="/contact" className="btn-secondary">Get In Touch</Link>
         </div>
       </section>
