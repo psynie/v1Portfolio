@@ -1,40 +1,45 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { useEffect, useState } from "react";
+import { SunIcon, MoonIcon } from "./Icons";
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+const links = [
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "dark");
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const els = links.map((l) => document.getElementById(l.id)).filter(Boolean);
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const toggle = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch { /* ignore */ }
+  };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          Abbas<span className="highlight">Dev</span>
-        </Link>
-        
-        <div className={`hamburger ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(!isOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          <li className="nav-item">
-            <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/about" className="nav-link" onClick={() => setIsOpen(false)}>About</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/projects" className="nav-link" onClick={() => setIsOpen(false)}>Projects</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-link nav-link-cta" onClick={() => setIsOpen(false)}>Contact</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div className="pill-wrap">
+      <nav className="pill" aria-label="Main">
+        {links.map((l) => (
+          <a key={l.id} href={`#${l.id}`} className={`nav-link ${active === l.id ? "active" : ""}`}>{l.label}</a>
+        ))}
+        <span className="sep" />
+        <button className="icon-btn" onClick={toggle} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
+          {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+        </button>
+      </nav>
+    </div>
   );
 }
-
-export default Navbar;

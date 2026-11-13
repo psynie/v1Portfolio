@@ -1,30 +1,14 @@
-import React from 'react'
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
 
-import Navbar from "./components/Navbar"
-import ScrollToTop from "./components/ScrollToTop"
-import About from "./pages/About"
-import Home from "./pages/Home"
-import Projects from "./pages/Projects"
-import Contact from "./pages/Contact"
-import Footer from "./components/Footer"
-
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <>
+      <a href="#main" className="skip-link">Skip to content</a>
       <Navbar />
-      <main>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/projects' element={<Projects />} />
-          <Route path='/contact' element={<Contact />} />
-        </Routes>
-      </main>
+      <main id="main"><Home /></main>
       <Footer />
-    </BrowserRouter>
-  )
+    </>
+  );
 }
-
-export default App
